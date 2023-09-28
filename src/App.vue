@@ -29,6 +29,7 @@ export default {
         <h5>Original Title: {{ film.original_title }}</h5>
         <p>Language: {{ film.original_language }}</p>
         <p>Vote: {{ film.vote_average }}</p>
+
       </li>
     </ol>
   </div>
