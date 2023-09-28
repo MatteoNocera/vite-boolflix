@@ -24,7 +24,9 @@ export const state = reactive({
             .catch(error => {
                 console.error(error)
             })
-    }
+    },
+
+
 })
 
 
