@@ -10,6 +10,7 @@ export const state = reactive({
 
 
 
+
     // Actions
     searchFilm(url) {
         axios
