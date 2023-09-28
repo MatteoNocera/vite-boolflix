@@ -1,6 +1,12 @@
 <script>
+import { state } from './state.js'
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      state
+    }
+  }
 }
 </script>
 
@@ -10,4 +16,4 @@ export default {
   </div>
 </template>
 
-<style ></style>
+<style></style>
