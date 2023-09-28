@@ -32,6 +32,7 @@ export default {
 
 <template>
   <div class="container my-3">
+    <h1>Boolflix</h1>
     <div class="searchbar">
       <input type="search" name="search_film" id="search_film" v-model="state.filterName">
       <button @click="this.filterByFilm(), this.filterBySeries()">Cerca</button>
