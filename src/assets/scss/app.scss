@@ -10,9 +10,55 @@
 #app_main {
     min-height: 100vh;
     height: 100%;
+    overflow-y: hidden;
     background-color: gray;
 
     input {
         width: 30vw;
     }
+
+    .row {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .card {
+        width: 342px;
+        position: relative;
+
+        .card-body {
+
+            display: none;
+
+            position: absolute;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #0000009a;
+            border-radius: var(--bs-border-radius);
+
+            .content {
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                path {
+                    fill: #ffffff;
+                }
+            }
+        }
+
+        &:hover .card-body {
+            display: block;
+        }
+
+        img {
+            width: auto;
+            aspect-ratio: 1 / 1;
+        }
+
+
+    }
+
 }
