@@ -1,6 +1,8 @@
 <script>
-import { state } from './state.js'
+import { state } from './state.js';
 import LanguageItem from './components/LanguageItem.vue';
+import AppNavbar from './components/AppNavbar.vue';
+
 export default {
   name: 'App',
   data() {
@@ -10,26 +12,10 @@ export default {
       url_img: 'https://image.tmdb.org/t/p/w342',
     };
   },
-  methods: {
-    filterByFilm() {
-      console.log('searching...film');
-      const url = this.state.film_base_url + `&query=${state.filterName}`;
-      this.state.searchFilm(url);
-    },
-    filterBySeries() {
-      console.log('searching...series');
-      const url_series = this.state.series_base_url + `&query=${state.filterName}`;
-      this.state.searchSeries(url_series);
-    },
-    /* stampStars() {
-      if ((film.vote_average / 2).toFixed(0) = 1) {
 
-      }
-    } */
-
-  },
   components: {
     LanguageItem,
+    AppNavbar,
   }
 }
 
@@ -37,30 +23,28 @@ export default {
 
 <template>
   <div id="app_main">
+
+    <!-- <nav class="navbar bg-dark shadow px-5">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <img src="./assets/img/logo.png" alt="">
+        </a>
+        <div class="d-flex">
+
+          <input class="form-control me-2" type="search" name="search_film" id="search_film" v-model="state.filterName"
+            placeholder="Search a title">
+          <button class="btn btn-danger" @click="this.filterByFilm(), this.filterBySeries()">Cerca</button>
+
+
+        </div>
+      </div>
+    </nav> -->
+
+    <AppNavbar></AppNavbar>
+
     <div class="container mb-3">
 
-      <nav class="navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <img src="./assets/img/logo.png" alt="">
-          </a>
-          <div class="d-flex">
 
-            <input class="form-control me-2" type="search" name="search_film" id="search_film" v-model="state.filterName"
-              placeholder="Search a title">
-            <button class="btn btn-danger" @click="this.filterByFilm(), this.filterBySeries()">Cerca</button>
-
-
-          </div>
-        </div>
-      </nav>
-
-
-      <h1>Boolflix</h1>
-      <div class="searchbar">
-
-
-      </div>
 
       <div class="row">
         <div class="col-6">
