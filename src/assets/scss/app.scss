@@ -1,10 +1,17 @@
 @use '/node_modules/bootstrap/scss/bootstrap.scss';
 
+
+/* TO DO CHANGE SCROLLBAR STYLE */
+
+
 #app_main {
     min-height: 100vh;
     height: 100%;
     overflow-y: hidden;
-    background-color: gray;
+    background-color: rgb(54, 52, 52);
+
+
+
 
     input {
         width: 30vw;
