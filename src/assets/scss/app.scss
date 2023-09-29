@@ -1,3 +1,16 @@
 @use '/node_modules/bootstrap/scss/bootstrap.scss';
 
-@use '/node_modules/font-awesome/css/font-awesome.css'
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+#app_main {
+    min-height: 100vh;
+    height: 100%;
+    background-color: gray;
+}
+
+;
