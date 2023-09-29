@@ -28,13 +28,20 @@ export default {
 
     <div class="container mb-3 pt-3">
 
-      <h2 class="text-white fw-bold">Film</h2>
-      <div class="row my-4">
+      <div v-show="state.filmData == ''">
+        <h2 class="text-white fw-bold text-center fs-1">Inizia la tua ricerca</h2>
+
+      </div>
 
 
-        <div class="d-flex flex-grow gap-2 flex-wrap">
+      <h2 v-show="state.filmData != ''" class="text-white fw-bold mb-5">Film</h2>
 
-          <div class="mb-4 card" v-for="film in state.filmData">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-2">
+
+
+        <div class="col" v-for="film in state.filmData">
+
+          <div class="mb-4 card">
 
             <img class="card-img-top" v-if="film.poster_path != null" :src="url_img + film.poster_path" alt="Title">
             <img v-else class="card-img-top" src="./assets/img/404.jpg" width="342" alt="Title">
@@ -82,14 +89,18 @@ export default {
 
         </div>
 
+
+
       </div>
 
-      <h2 class="text-white fw-bold">Serie Tv</h2>
-      <div class="row my-4">
+      <h2 v-show="state.seriesData != ''" class="text-white fw-bold my-5">Serie Tv</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-2">
 
-        <div class="d-flex flex-grow gap-2 flex-wrap">
 
-          <div class="mb-4 card" v-for="serie in state.seriesData">
+
+        <div class="col" v-for="serie in state.seriesData">
+
+          <div class="mb-4 card">
 
             <img class="card-img-top" v-if="serie.poster_path != null" :src="url_img + serie.poster_path" alt="Title">
             <img v-else class="card-img-top" src="./assets/img/404.jpg" width="342" alt="Title">
