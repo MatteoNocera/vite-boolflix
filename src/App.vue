@@ -21,6 +21,11 @@ export default {
       const url_series = this.state.series_base_url + `&query=${state.filterName}`;
       this.state.searchSeries(url_series);
     },
+    /* stampStars() {
+      if ((film.vote_average / 2).toFixed(0) = 1) {
+
+      }
+    } */
 
   },
   components: {
@@ -49,12 +54,22 @@ export default {
 
             <LanguageItem :position="film.original_language.toUpperCase()" :url="url_flags"></LanguageItem>
 
-            <p>
-              Voto: <i class="fa fa-star"></i> {{ (film.vote_average / 2).toFixed(0) }}
+            <p v-if="film.vote_count != 0">
+              Voto: <i v-for="star in Number((film.vote_average / 2).toFixed(0))" class="fa fa-star">
+
+              </i><span>
+                <i v-for="emptyStar in (5 - (Number((film.vote_average / 2).toFixed(0))))" class="fa fa-star-o"></i>
+              </span>
 
             </p>
+            <p v-else>
+              Voto: Ancora nessun voto
+            </p>
 
-            <img :src="url_img + film.poster_path" alt="">
+            <img v-if="film.poster_path != null" :src="url_img + film.poster_path" alt="">
+            <img v-else
+              src="https://thumbs.dreamstime.com/z/pagina-di-progettazione-errore-non-trovato-libro-senza-pagina-libro-aperto-una-vista-superiore-illustrazione-di-vettore-85777589.jpg?w=342"
+              alt="">
 
           </li>
         </ol>
@@ -69,9 +84,22 @@ export default {
 
             <LanguageItem :position="serie.original_language.toUpperCase()" :url="url_flags"></LanguageItem>
 
-            <p>Voto: {{ (serie.vote_average / 2).toFixed(0) }}</p>
+            <p v-if="serie.vote_count != 0">
+              Voto: <i v-for="serieStar in Number((serie.vote_average / 2).toFixed(0))" class="fa fa-star">
 
-            <img :src="url_img + serie.poster_path" alt="">
+              </i><span>
+                <i v-for="emptySerieStar in (5 - (Number((serie.vote_average / 2).toFixed(0))))" class="fa fa-star-o"></i>
+              </span>
+
+            </p>
+            <p v-else>
+              Voto: Ancora nessun voto
+            </p>
+
+            <img v-if="serie.poster_path != null" :src="url_img + serie.poster_path" alt="">
+            <img v-else
+              src="https://thumbs.dreamstime.com/z/pagina-di-progettazione-errore-non-trovato-libro-senza-pagina-libro-aperto-una-vista-superiore-illustrazione-di-vettore-85777589.jpg?w=342"
+              alt="">
 
           </li>
         </ol>
