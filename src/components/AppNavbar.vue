@@ -18,6 +18,7 @@ export default {
             console.log('searching...series');
             const url_series = this.state.series_base_url + `?api_key=${state.apy_key}` + `&query=${state.filterName}`;
             this.state.searchSeries(url_series);
+            state.filterName = '';
         },
 
 

@@ -36,7 +36,7 @@ export default {
 
       <h2 v-show="state.filmData != ''" class="text-white fw-bold mb-5">Film</h2>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-2">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-4">
 
 
         <div class="col" v-for="film in state.filmData">
@@ -94,7 +94,7 @@ export default {
       </div>
 
       <h2 v-show="state.seriesData != ''" class="text-white fw-bold my-5">Serie Tv</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-2">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between d-flex px-0 g-4">
 
 
 
