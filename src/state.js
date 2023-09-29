@@ -5,9 +5,12 @@ export const state = reactive({
 
     // TODO Divide link and API_KEY
     // State
-    film_base_url: 'https://api.themoviedb.org/3/search/movie?api_key=8a55e606dd8dc6b2191659c1090f120a',
+    film_base_url: 'https://api.themoviedb.org/3/search/movie',
 
-    series_base_url: 'https://api.themoviedb.org/3/search/tv?api_key=8a55e606dd8dc6b2191659c1090f120a',
+    series_base_url: 'https://api.themoviedb.org/3/search/tv',
+
+    apy_key: '8a55e606dd8dc6b2191659c1090f120a',
+
     filterName: '',
     filmData: '',
     seriesData: '',
