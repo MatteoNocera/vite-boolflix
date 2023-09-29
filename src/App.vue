@@ -49,8 +49,8 @@ export default {
             <div class="card-body">
 
               <div class="content">
-                <h3 class="card-title">Titolo: {{ film.title }}</h3>
-                <h5>Titolo Originale: {{ film.original_title }}</h5>
+                <h4 class="card-title">Titolo: {{ film.title }}</h4>
+                <h6>Titolo Originale: {{ film.original_title }}</h6>
 
                 <LanguageItem :position="film.original_language.toUpperCase()" :url="url_flags"></LanguageItem>
 
@@ -81,6 +81,10 @@ export default {
 
                 <p v-else>
                   Voto: Ancora nessun voto
+                </p>
+
+                <p>
+                  {{ film.overview }}
                 </p>
               </div>
 
@@ -141,6 +145,11 @@ export default {
                 <p v-else>
                   Voto: Ancora nessun voto
                 </p>
+
+                <p>
+                  {{ serie.overview }}
+                </p>
+
               </div>
 
             </div>

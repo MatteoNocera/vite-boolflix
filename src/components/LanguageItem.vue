@@ -7,7 +7,7 @@ export default {
 
 <template>
     <p>
-        Lingua: {{ position }}
+        Lingua:
 
         <img v-if="position == 'EN'" :src="url + 'GB/shiny/24.png'" alt="">
 
