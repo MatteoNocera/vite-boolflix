@@ -5,7 +5,7 @@ import LanguageItem from './LanguageItem.vue';
 
 
 export default {
-    name: 'AppFilmCard',
+    name: 'AppSerieCard',
 
     data() {
         return {
@@ -13,7 +13,7 @@ export default {
         }
     },
     props: {
-        film: Object,
+        serie: Object,
         path: String
 
     },
@@ -21,45 +21,58 @@ export default {
         LanguageItem,
     },
     methods: {
-        castFilm(id) {
-            const url_cast = state.base_url + state.film_url + `/${id}/credits` + `?api_key=${state.apy_key}`;
+        castSerie(id) {
+            const url_cast = state.base_url + state.serie_url + `/${id}/credits` + `?api_key=${state.apy_key}`;
             state.fetchCast(url_cast);
             /* this.cast = ''; */
         },
-
+        /* fetchCast(url_cast) {
+            axios
+                .get(url_cast)
+                .then(response => {
+                    console.log(response);
+                    this.cast = response.data.cast;
+                    console.log(this.cast);
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }, */
     }
 }
 </script>
 
 <template>
     <div class="col">
-        <div class="mb-4 card" @click="this.castFilm(film.id)" @mouseout="state.cast = ''">
 
-            <img v-if="path != null" class="card-img-top" :src="path" alt="Title">
+        <div class="mb-4 card" @click="this.castSerie(serie.id)" @mouseout="state.cast = ''">
+
+            <img class="card-img-top" v-if="path.toString() != 'https://image.tmdb.org/t/p/w342null'" :src="path"
+                alt="Title">
             <img v-else class="card-img-top" src="../assets/img/404.jpg" width="342" alt="Title">
 
             <div class="card-body">
 
                 <div class="content">
-                    <h4 class="card-title">Titolo: {{ film.title }} </h4>
-                    <h6 v-if="film.title != film.original_title">Titolo Originale: {{ film.original_title }}</h6>
+                    <h4 class="card-title">Titolo: {{ serie.name }}</h4>
+                    <h6 v-if="serie.name != serie.original_name">Titolo Originale: {{ serie.original_name }}</h6>
 
-                    <LanguageItem :position="film.original_language.toUpperCase()" :url="state.url_flags"></LanguageItem>
+                    <LanguageItem :position="serie.original_language.toUpperCase()" :url="state.url_flags"></LanguageItem>
 
-                    <p class="card-text" v-if="film.vote_count != 0">
+                    <p class="card-text" v-if="serie.vote_count != 0">
 
                         Voto:
                         <span>
 
 
-                            <svg v-for="star in Number((film.vote_average / 2).toFixed(0))"
+                            <svg v-for="serieStar in Number((serie.vote_average / 2).toFixed(0))"
                                 xmlns="http://www.w3.org/2000/svg" height="0.75em"
                                 viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path
                                     d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                             </svg>
 
-                            <svg v-for="emptyStar in (5 - (Number((film.vote_average / 2).toFixed(0))))"
+                            <svg v-for="emptySerieStar in (5 - (Number((serie.vote_average / 2).toFixed(0))))"
                                 xmlns="http://www.w3.org/2000/svg" height="0.75em"
                                 viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
 
@@ -76,9 +89,8 @@ export default {
                     </p>
 
                     <p>
-                        {{ film.overview }}
+                        {{ serie.overview }}
                     </p>
-
 
                     <h6>click me for cast info</h6>
                     <p v-for="person in state.cast">
@@ -86,13 +98,13 @@ export default {
                         Attore: {{ person.name }}
                     </p>
 
-
-
                 </div>
 
             </div>
         </div>
+
     </div>
 </template>
+
 
 

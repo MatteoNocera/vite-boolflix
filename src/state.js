@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const state = reactive({
 
-    // TODO Divide link and API_KEY
+
     // State
 
     base_url: 'https://api.themoviedb.org/3',
@@ -57,10 +57,22 @@ export const state = reactive({
             })
 
     },
-
-
-
-
+    fetchCast(url_cast) {
+        axios
+            .get(url_cast)
+            .then(response => {
+                console.log(response);
+                this.cast = response.data.cast;
+                console.log(this.cast);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    },
 })
+
+
+
+
 
 
