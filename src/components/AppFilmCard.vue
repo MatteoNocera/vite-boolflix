@@ -2,9 +2,11 @@
 
 import { state } from '../state.js';
 import LanguageItem from './LanguageItem.vue';
+import axios from 'axios';
 
 export default {
     name: 'AppFilmCard',
+    cast: null,
     data() {
         return {
             state,
@@ -21,16 +23,28 @@ export default {
     methods: {
         castFilm(id) {
             const url_cast = state.base_url + state.film_url + `/${id}/credits` + `?api_key=${state.apy_key}`;
-            state.fetchCast(url_cast);
-            state.cast = '';
-        }
+            this.fetchCast(url_cast);
+            /* this.cast = ''; */
+        },
+        fetchCast(url_cast) {
+            axios
+                .get(url_cast)
+                .then(response => {
+                    console.log(response);
+                    this.cast = response.data.cast;
+                    console.log(this.cast);
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        },
     }
 }
 </script>
 
 <template>
     <div class="col">
-        <div class="mb-4 card">
+        <div class="mb-4 card" @click="this.castFilm(film.id)">
 
             <img v-if="film.poster_path != null" class="card-img-top" :src="path" alt="Title">
             <img v-else class="card-img-top" src="../assets/img/404.jpg" width="342" alt="Title">
@@ -77,10 +91,10 @@ export default {
                     </p>
 
 
-                    <h6 @click="this.castFilm(film.id)">click me for cast info</h6>
-                    <p v-for="person in state.cast">
+                    <h6>click me for cast info</h6>
+                    <p v-for="person in cast">
 
-                        {{ person.name }}
+                        Attore: {{ person.name }}
                     </p>
 
 

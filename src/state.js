@@ -57,18 +57,7 @@ export const state = reactive({
             })
 
     },
-    fetchCast(url_cast) {
-        axios
-            .get(url_cast)
-            .then(response => {
-                console.log(response);
-                this.cast = response.data.cast;
-                console.log(this.cast);
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    },
+
 
 
 
