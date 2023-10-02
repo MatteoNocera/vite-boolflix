@@ -16,6 +16,14 @@ export default {
   components: {
     LanguageItem,
     AppNavbar,
+  },
+  methods: {
+    castFilm(id) {
+      /* TO insert forEach?! */
+      const url_cast = this.state.base_url + state.film_url + `/${id}/credits` + `?api_key=${state.apy_key}`;
+      state.fetchCast(url_cast);
+      state.cast = '';
+    }
   }
 }
 
@@ -41,7 +49,7 @@ export default {
 
         <div class="col" v-for="film in state.filmData">
 
-          <div class="mb-4 card">
+          <div class="mb-4 card" @click="castFilm(film.id)">
 
             <img class="card-img-top" v-if="film.poster_path != null" :src="url_img + film.poster_path" alt="Title">
             <img v-else class="card-img-top" src="./assets/img/404.jpg" width="342" alt="Title">
@@ -86,6 +94,16 @@ export default {
                 <p>
                   {{ film.overview }}
                 </p>
+
+
+                <h6>click me for cast info</h6>
+                <p v-for="person in state.cast">
+
+                  {{ person.name }}
+                </p>
+
+
+
               </div>
 
             </div>

@@ -11,15 +11,16 @@ export default {
     methods: {
         filterByFilm() {
             console.log('searching...film');
-            const url = this.state.film_base_url + `?api_key=${state.apy_key}` + `&query=${state.filterName}`;
-            this.state.searchFilm(url);
+            const url_film = state.base_url + state.action_search_url + state.film_url + `?api_key=${state.apy_key}` + `&query=${state.filterName}`;
+            this.state.searchFilm(url_film);
         },
         filterBySeries() {
             console.log('searching...series');
-            const url_series = this.state.series_base_url + `?api_key=${state.apy_key}` + `&query=${state.filterName}`;
+            const url_series = state.base_url + state.action_search_url + state.serie_url + `?api_key=${state.apy_key}` + `&query=${state.filterName}`;
             this.state.searchSeries(url_series);
             state.filterName = '';
         },
+
 
 
     }
