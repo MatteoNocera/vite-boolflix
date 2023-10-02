@@ -14,12 +14,10 @@ export const state = reactive({
 
     serie_url: '/tv',
 
-
-    /* film_base_url: 'https://api.themoviedb.org/3/search/movie',
-
-    series_base_url: 'https://api.themoviedb.org/3/search/tv', */
-
     apy_key: '8a55e606dd8dc6b2191659c1090f120a',
+
+    url_flags: 'https://flagsapi.com/',
+    url_img: 'https://image.tmdb.org/t/p/w342',
 
     filterName: '',
     filmData: '',
