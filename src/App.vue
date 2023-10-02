@@ -49,8 +49,8 @@ export default {
             <div class="card-body">
 
               <div class="content">
-                <h4 class="card-title">Titolo: {{ film.title }}</h4>
-                <h6>Titolo Originale: {{ film.original_title }}</h6>
+                <h4 class="card-title">Titolo: {{ film.title }} </h4>
+                <h6 v-if="film.title != film.original_title">Titolo Originale: {{ film.original_title }}</h6>
 
                 <LanguageItem :position="film.original_language.toUpperCase()" :url="url_flags"></LanguageItem>
 
@@ -112,8 +112,8 @@ export default {
             <div class="card-body">
 
               <div class="content">
-                <h3 class="card-title">Titolo: {{ serie.name }}</h3>
-                <h5>Titolo Originale: {{ serie.original_name }}</h5>
+                <h4 class="card-title">Titolo: {{ serie.name }}</h4>
+                <h6 v-if="serie.name != serie.original_name">Titolo Originale: {{ serie.original_name }}</h6>
 
                 <LanguageItem :position="serie.original_language.toUpperCase()" :url="url_flags"></LanguageItem>
 
